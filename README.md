@@ -1,6 +1,6 @@
 # cpAOP
 Code used to generate cpAOP network
-This repository containes code used in the paper "Integrating publically-available data to generate computationally-predicted adverse outcome pathways for hepatic steatosis" by Shannon Bell, Michelle Angrish, Charles E. Wood, Stephen W. Edwards.
+This repository containes code used in the paper "Integrating publically-available data to generate computationally-predicted adverse outcome pathways for fatty liver" by Shannon Bell, Michelle Angrish, Charles E. Wood, Stephen W. Edwards.
 
 A break down of the workflow is as follows:
 
