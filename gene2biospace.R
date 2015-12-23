@@ -5,14 +5,14 @@
 library(doBy)
 library(igraph);library(arules)
 #get the differential experss data
-deDesc<-read.table("../Output/NetRun1501/Desc2FC-T1-0.75-FC-2-Liver-NetRun1501.txt", sep='\t', header=TRUE)
+deDesc<-read.table("../Output/NetRun1501/Desc2FC-T1-0.75-FC-2-Liver-NetRun1501.txt", sep='\t', header=TRUE) #DE data from https://github.com/bellsha/TGGATESProc/blob/master/CombineArrayDE.R
 deDA<-abs(deDesc)
 #############################33
 #get the experimental mappings
-probe<-read.table("../Files/rat2302.probe.entrez.go_20150515.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=FALSE)
+probe<-read.table("../Files/rat2302.probe.entrez.go_20150515.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=FALSE) #from: https://github.com/bellsha/TGGATESProc/blob/master/ProbeAnnotation.R
 colnames(probe)<-c("ProbeID","ENTREZID","GOID", "Evi","GOprocess", "UniprotID", "GOTerm", "GODef")
 tmp2<-subset(probe, ProbeID %in% row.names(deDesc))
-path<-read.table("../Files/Reactome/ReactomePathways2UniProtRAT.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
+path<-read.table("../Files/Reactome/ReactomePathways2UniProtRAT.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE) #from: https://github.com/bellsha/Reactome2Network/blob/master/ReactomeClassv2.R
 #remove the NA
 path<-subset(path, UniProtID != "NA")
 #fix the whitespace issue
