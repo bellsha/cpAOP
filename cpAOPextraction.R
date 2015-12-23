@@ -7,9 +7,9 @@ indir<-"../Output/NetRun1501/Update"
 #bring in the datasets...node lists
 allEdges<-read.table(file.path(indir, "LiverTCAReactomePhenoChemGraph.txt"), sep='\t', header=TRUE, comment.char="" , strip.white=TRUE)
 #labels
-labels<-read.table(file.path(indir, "LiverTCAPhenoChemReactomeLabels.txt"), sep='\t', header=TRUE, comment.char="", quote="", strip.white=TRUE)
+labels<-read.table(file.path(indir, "NodeLabels.txt"), sep='\t', header=TRUE, comment.char="", quote="", strip.white=TRUE)
 
-aop<-read.table("../Files/LiverPhenotypeLabelsV2.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
+aop<-read.table("../Files/LiverPhenotypeLabels.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
 #remove kidney
 #aop<-subset(aop, Source != "kidney")
 ####################
@@ -30,8 +30,8 @@ temp2<-merge(temp, unique(labels[,1:2]), by.x="V2", by.y="ID", all.x=TRUE)
 colnames(temp2)<-gsub("altID", "V2.name",colnames(temp2))
 allEdges2<-temp2[,colnames(temp2)[c(2,14,1,15,3:13)]]
 #write table
-write.table(allEdges2, file=file.path(outdir,"LiverTCAReactomePhenoChemGraphv2.txt"), sep='\t', col.names=TRUE, row.names=FALSE,quote=FALSE )
-
+#write.table(allEdges2, file=file.path(outdir,"LiverTCAReactomePhenoChemGraphv2.txt"), sep='\t', col.names=TRUE, row.names=FALSE,quote=FALSE )
+write.table(allEdges2, file=file.path(outdir,"NetworkTable.txt"), sep='\t', col.names=TRUE, row.names=FALSE,quote=FALSE )
 #to generate the list of compounds that are connected to the outcomes of interest.
 phen<-list(alteredMet=unique(subset(aop, Category =="altered metabolic activity")$Label), cholestasis=unique(subset(aop, Category =="cholestasis")$Label), lipidDys=unique(subset(aop, Category =="lipid dysregulation")$Label))
 #chems<-subset(labels, Group=="Chem")
