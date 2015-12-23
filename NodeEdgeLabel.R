@@ -48,7 +48,7 @@ colnames(c2l)<-c("treatment", "CHEMICAL","SINGLE_REPEAT_TYPE","SACRIFICE_PERIOD"
 
 ##
 #
-#reactome to chemcial mapping: rules2net201501.R
+#reactome to chemcial mapping: rules2net.R
 r2c<-read.table("../Output/NetRun1501/Update/LiverReactomeEnrichChemicalEdges.txt", sep='\t', header=TRUE, quote="\"")
 #phenotype (path and lab) to reactome mapping: rules2net201501.R
 p2r<-read.table("../Output/NetRun1501/Update/LiverReactomePhenoEnrichRulesGraph.txt", sep='\t', header=TRUE, quote="\"")
@@ -216,4 +216,4 @@ labels<-as.data.frame(rbind(CM,CMno, aoMap2, RPW, tclab))
 z<-setdiff(c(as.character(allEdges$V1), as.character(allEdges$V2)), as.character(labels$ID))
 
 #labels
-write.table(labels,file="../Output/NetRun1501/Update/LiverTCAPhenoChemReactomeLabels.txt", sep='\t', col.names=TRUE, row.names=FALSE,quote=FALSE )
+write.table(labels,file="../Output/NetRun1501/Update/NodeLabels.txt", sep='\t', col.names=TRUE, row.names=FALSE,quote=FALSE )
