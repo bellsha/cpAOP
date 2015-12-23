@@ -7,7 +7,7 @@ info<-read.table("../Output/NetRun1501/RunInfo-Liver-NetRun1501.txt", sep='\t', 
 colnames(info)<-c("runID", "fileName","SPECIES","ORGAN_ID", "CHEMICAL", "DOSE_LEVEL", "SACRIFICE_PERIOD","TEST-TYPE","SINGLE_REPEAT_TYPE", "folder", "treatment", "experiment")
 
 #the annotation dataframe
-anno<-read.table("../Output/NetRun1501/Update/PathEnrichReactomeAnnoTable.txt", sep='\t', header=TRUE)
+anno<-read.table("../Output/NetRun1501/Update/PathEnrichReactomeAnnoTable.txt", sep='\t', header=TRUE) #from https://github.com/bellsha/cpAOP/blob/master/gene2biospace.R
 path<-read.table("../Files/Reactome/ReactomePathways2UniProtRAT.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
 
 #the reactome pathway mapping
