@@ -4,6 +4,10 @@ This repository containes code used in the paper "Integrating publically-availab
 
 A break down of the workflow is as follows:
 
+*Note: data files have been provided in the supplementary text to carry out the workflow starting at rules2net.R. 
+This will provide the needed input files for NodeEdgeLabel.R and cpAOPextraction.R when paired with the additonal files in https://github.com/bellsha/cpAOP_Supplementary *
+
+
 Data sources
 
 TG GATES data was downloaded from ftp://ftp.biosciencedbc.jp/archive/open-tggates/LATEST/
