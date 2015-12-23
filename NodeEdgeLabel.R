@@ -13,7 +13,8 @@ info<-read.table("../Output/NetRun1501/RunInfo-Liver-NetRun1501.txt", sep='\t', 
 colnames(info)<-c("runID", "fileName","SPECIES","ORGAN_ID", "CHEMICAL", "DOSE_LEVEL", "SACRIFICE_PERIOD","TEST-TYPE","SINGLE_REPEAT_TYPE", "folder", "treatment", "experiment")
 path<-read.table("../Files/Reactome/ReactomePathways2UniProtRAT.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
 #Need to expand so i can do something on a class lower bases...right now using the AO for that
-aop<-read.table("../Files/LiverPhenotypeLabelsV2.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
+#aop<-read.table("../Files/LiverPhenotypeLabelsV2.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
+aop<-read.table("../Files/LiverPhenotypeLabels.txt", sep='\t',comment.char='', na.strings='', quote="\"", header=TRUE)
 #remove kidney 
 #aop<-subset(aop, Source != "kidney")
 #toxcast mapping file...not disable quoting here
