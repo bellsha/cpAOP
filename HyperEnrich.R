@@ -74,13 +74,15 @@ ClusReport <- function(data, background=NULL,Reference=NULL,RefData=NULL, MinAnn
   #will not work right if duplicates in RefData
   RefData<-unique(RefData)
   if(!is.null(background)){
-    
-    Ref_DF<-merge(RefData, as.data.frame(background), by.x=colnames(RefData)[2], by.y="background")
-    Ref_DF<-unique(Ref_DF[,c(2,1)])
+    #if the user supplies a background, then use only the reference data relevent to the background
+    Ref_DF<-merge(RefData, unique(as.data.frame(background)), by.x=colnames(RefData)[2], by.y="background")
+    #Ref_DF<-unique(Ref_DF[,c(2,1)])
+    Ref_DF<-Ref_DF[,c(2,1)] #I do not think we want the unique here, 
   }else{
     Ref_DF<-RefData
   }
   colnames(Ref_DF)<-c('label','feature')
+  #Generating the Reference object. a list of all the features that are related to a label
   if(is.null(Reference)){
     lab<-unique(as.character(Ref_DF[,1]))
     Labs<-list()
@@ -99,11 +101,11 @@ ClusReport <- function(data, background=NULL,Reference=NULL,RefData=NULL, MinAnn
     n <- length(unique(Ref_DF[, 2]))  
   }else{
     #note this is to adjust the total numnber of "balls" according to the # of annotations
-    #it is expected that the supplied input 
+    #n is set to the number of entries in the background that match the reference
     n <- length(background[background %in% unique(Ref_DF[, 2])])
   }
   ###
-  #note that the Reference should be matched to the sample for correct accounting, ie thi
+  #note that the Reference should be matched to the sample for correct accounting
   clus<-unique(as.vector(data[,1]))
   containerDF<-NULL
   for(i in clus){
