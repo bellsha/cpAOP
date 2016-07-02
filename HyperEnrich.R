@@ -75,7 +75,8 @@ ClusReport <- function(data, background=NULL,Reference=NULL,RefData=NULL, MinAnn
   RefData<-unique(RefData)
   if(!is.null(background)){
     #if the user supplies a background, then use only the reference data relevent to the background
-    Ref_DF<-merge(RefData, unique(as.data.frame(background)), by.x=colnames(RefData)[2], by.y="background")
+    #this enables capturing of the replicates (for 1 to many annotations)
+    Ref_DF<-merge(RefData, as.data.frame(background), by.x=colnames(RefData)[2], by.y="background")
     #Ref_DF<-unique(Ref_DF[,c(2,1)])
     Ref_DF<-Ref_DF[,c(2,1)] #I do not think we want the unique here, 
   }else{
