@@ -41,7 +41,7 @@ HyperEnrich <- function(samp, background,Ref_DF, Reference, statsB=NULL,Nannot=2
   #match_key <-sapply(Reference, function(f) unlist(f)[unlist(f) %in% as.character(samp)])
   match_key <-sapply(Reference, function(f) f[as.character(samp) %in% unlist(f)])
   match_key <- sapply(match_key, function(f) { paste(f, collapse=" ") } )
-  match_key <- as.vector(match_key)
+  match_key <- na.omit(as.vector(match_key))
   key <- match_key; key[key==""] <- "NA"
   ###
 
